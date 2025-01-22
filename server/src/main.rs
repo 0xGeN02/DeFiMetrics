@@ -20,7 +20,7 @@ async fn wellcome() -> impl Responder {
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
 
-    let port = env::var("RUST_SERVER_PORT").unwrap_or_else(|_| "8080".to_string());
+    let port = env::var("RUST_SERVER_PORT").expect("RUST_SERVER_PORT .env ERROR");
     println!();
     println!("\x1b[34mDeFiMetrics.API Server\x1b[0m");
     println!("Server running at: http://127.0.0.1:{}", port);

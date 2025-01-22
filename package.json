@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "dotenv -e .env.local next dev",
+    "dev": "dotenv -e .env next dev",
     "rust": "cd server && cargo run",
+    "rust_test": "cd server && cargo test",
     "build": "dotenv -e .env next build",
     "start": "next start",
     "lint": "next lint"

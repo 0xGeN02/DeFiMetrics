@@ -1,6 +1,7 @@
 use actix_web::{get, App, HttpServer, HttpResponse, Responder};
 use serde::{Deserialize, Serialize};
-
+use std::env;
+use dotenv::dotenv;
 #[derive(Serialize, Deserialize)]
 struct WellcomeMessage {
     message: String,
@@ -10,18 +11,26 @@ struct WellcomeMessage {
 //Wellcome api endpoint
 async fn wellcome() -> impl Responder {
     let response = WellcomeMessage {
-        message: "Wellcome to DeFimetrics.API".to_string(),
+        message: "Wellcome to DeFiMetrics.API".to_string(),
     };
     HttpResponse::Ok().json(response)
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    dotenv().ok();
+
+    let port = env::var("RUST_SERVER_PORT").unwrap_or_else(|_| "8080".to_string());
+    println!();
+    println!("\x1b[34mDeFiMetrics.API Server\x1b[0m");
+    println!("Server running at: http://127.0.0.1:{}", port);
+    println!("Local server address: http://localhost:{}", port);
+    println!();
     HttpServer::new(|| {
         App::new()
             .service(wellcome)
     })
-    .bind("127.0.0.1:8080")?
+    .bind(format!("127.0.0.1:{}", port))?
     .run()
     .await
 }

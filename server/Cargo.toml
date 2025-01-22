@@ -1,10 +1,11 @@
 [package]
-name = "DeFiMetrics_API"
+name = "defimetrics-server"
 version = "0.0.1"
 edition = "2021"
 
 [dependencies]
 actix-web = "4"
+dotenv = "0.15"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 

@@ -19,10 +19,10 @@ mod tests {
 
     #[test]
     fn test_simple_interest() {
-        let principal = 1000.0;
-        let rate = 0.05;
-        let time = 10.0;
-        let result = simple_interest(principal, rate, time);
+        let principal: f64 = 1000.0;
+        let rate: f64 = 0.05;
+        let time: f64 = 10.0;
+        let result: f64 = simple_interest(principal, rate, time);
         assert_eq!(result, 500.0);
     }
 }
